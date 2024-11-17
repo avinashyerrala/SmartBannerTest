@@ -1,0 +1,64 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>App Install Banner Example</title>
+    <link rel="manifest" href="/manifest.json">
+</head>
+<body>
+
+<div id="app-banner" style="display:none;">
+    <p>Get the best experience in our app!</p>
+    <button id="open-or-install-button">Open App</button>
+</div>
+
+<script>
+    // Register the service worker
+    if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+            navigator.serviceWorker.register('/service-worker.js')
+                .then((registration) => {
+                    console.log('Service Worker registered with scope:', registration.scope);
+                })
+                .catch((error) => {
+                    console.log('Service Worker registration failed:', error);
+                });
+        });
+    }
+
+    // beforeinstallprompt event handler for the app banner
+    let deferredPrompt;
+    const openOrInstallButton = document.getElementById('open-or-install-button');
+    const appBanner = document.getElementById('app-banner');
+
+    window.addEventListener('beforeinstallprompt', (e) => {
+        e.preventDefault();
+        deferredPrompt = e; // Store the event for later
+        appBanner.style.display = 'block'; // Show the custom banner
+        console.log("beforeinstallprompt event triggered");
+    });
+
+    openOrInstallButton.addEventListener('click', () => {
+        // Try opening the app using a deep link
+        window.location.href = "https://thenorthface.smart.link/mgt0q9j1x"; // Replace with your deep link
+
+        // Fallback to the install prompt if the app is not installed
+        setTimeout(() => {
+            if (deferredPrompt) {
+                deferredPrompt.prompt(); // Show the install prompt
+                deferredPrompt.userChoice.then((choiceResult) => {
+                    if (choiceResult.outcome === 'accepted') {
+                        console.log('User accepted the install prompt');
+                    } else {
+                        console.log('User dismissed the install prompt');
+                    }
+                    deferredPrompt = null;
+                    appBanner.style.display = 'none'; // Hide the banner
+                });
+            }
+        }, 2000); // Delay fallback to give time for the deep link to process
+    });
+</script>
+
+</body>
+</html>
