@@ -3,12 +3,12 @@
     "name": "The North Face - Experience it on Mobile",
     "icons": [
         {
-            "src": "/tnf_launcher_144.png",
+            "src": "/SmartBannerTest/tnf_launcher_144.png",
             "sizes": "144x144",
             "type": "image/png"
         },
         {
-            "src": "/tnf_launcher_192.png",
+            "src": "/SmartBannerTest/tnf_launcher_192.png",
             "sizes": "192x192",
             "type": "image/png"
         }
