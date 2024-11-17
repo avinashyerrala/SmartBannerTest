@@ -40,10 +40,10 @@
 
     openOrInstallButton.addEventListener('click', () => {
         // Try opening the app using a deep link
-        window.location.href = "https://thenorthface.smart.link/mgt0q9j1x"; // Replace with your deep link
+        //window.location.href = "https://thenorthface.smart.link/mgt0q9j1x"; // Replace with your deep link
 
         // Fallback to the install prompt if the app is not installed
-        setTimeout(() => {
+        // setTimeout(() => {
             if (deferredPrompt) {
                 deferredPrompt.prompt(); // Show the install prompt
                 deferredPrompt.userChoice.then((choiceResult) => {
@@ -56,7 +56,7 @@
                     appBanner.style.display = 'none'; // Hide the banner
                 });
             }
-        }, 2000); // Delay fallback to give time for the deep link to process
+        // }, 2000); // Delay fallback to give time for the deep link to process
     });
 </script>
 
