@@ -1,10 +1,10 @@
 {
-    "short_name": "The North Face",
-    "name": "The North Face - Experience it on Mobile",
+    "short_name": "TNF",
+    "name": "The North Face",
     "icons": [
         {
-            "src": "/SmartBannerTest/tnf_launcher_144.png",
-            "sizes": "144x144",
+            "src": "/SmartBannerTest/tnf_launcher_512.png",
+            "sizes": "512x512",
             "type": "image/png"
         },
         {
@@ -21,7 +21,7 @@
     "related_applications": [
         {
             "platform": "play",
-            "id": "com.thenothface.tnf"
+            "id": "com.thenorthface.tnf"
         }
     ]
 }
